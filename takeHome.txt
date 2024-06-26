@@ -1,0 +1,6 @@
+Dynamic Import 
+Provider Pattern
+Custom Hooks 
+Zod validation 
+react hook forms 
+ 
