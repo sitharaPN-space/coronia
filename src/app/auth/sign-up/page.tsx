@@ -16,6 +16,7 @@ const SignUp = (props: Props) => {
           </div>
           <HighLightBar />
         </SignUpFormProvider>
+        Test
       </div>
     </div>
   );
