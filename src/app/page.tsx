@@ -1,6 +1,18 @@
 import NavBar from "@/components/navbar/index";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { pricingCards } from "@/constants/landing-page";
+import clsx from "clsx";
+import { Check } from "lucide-react";
 import Image from "next/image";
+import Link from "../../node_modules/next/link";
 
 export default function Home() {
   return (
@@ -41,6 +53,45 @@ export default function Home() {
           {" you're"} not ready to commit you can get started for free.
         </p>
       </section>
+      <div className="flex  justify-center gap-4 flex-wrap mt-6">
+        {pricingCards.map((card) => (
+          <Card
+            key={card.title}
+            className={clsx("w-[300px] flex flex-col justify-between", {
+              "border-2 border-primary": card.title === "Unlimited",
+            })}
+          >
+            <CardHeader>
+              <CardTitle className="text-orange">{card.title}</CardTitle>
+              <CardDescription>
+                {pricingCards.find((c) => c.title === card.title)?.description}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <span className="text-4xl font-bold">{card.price}</span>
+              <span className="text-muted-foreground">
+                <span>/ month</span>
+              </span>
+            </CardContent>
+            <CardFooter className="flex flex-col items-start gap-4">
+              <div>
+                {card.features.map((feature) => (
+                  <div key={feature} className="flex gap-2">
+                    <Check />
+                    <p>{feature}</p>
+                  </div>
+                ))}
+              </div>
+              <Link
+                href={`/dashbord?plan=${card.title}`}
+                className="bg-[#f3d299] border-orange border-2 p-2 w-full text-center font-bold rounded-md"
+              >
+                Get Started
+              </Link>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
     </main>
   );
 }

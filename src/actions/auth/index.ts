@@ -2,6 +2,7 @@
 
 import { client } from "@/lib/prisma";
 import { currentUser, redirectToSignIn } from "@clerk/nextjs";
+import { onGetAllAccountDomains } from "../settings/index";
 //import { onGetAllAccountDomains } from "../settings";
 
 export const onCompleteUserRegistration = async (
@@ -50,7 +51,7 @@ export const onLoginUser = async () => {
         },
       });
       if (authenticated) {
-        //const domains = await onGetAllAccountDomains();
+        const domains = await onGetAllAccountDomains();
         return { status: 200, user: authenticated, domain: domains?.domains };
       }
     } catch (error) {
