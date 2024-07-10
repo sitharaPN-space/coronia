@@ -1,6 +1,8 @@
 import { SIDE_BAR_MENU } from "@/constants/menu";
 import { LogOut, Menu, MonitorSmartphone } from "lucide-react";
 import Image from "next/image";
+import DomainMenu from "./domain-menu";
+import MenuItem from "./menu-item";
 
 type Props = {
   onExpand(): void;
@@ -16,7 +18,7 @@ type Props = {
     | undefined;
 };
 
-const MaxMenu = (props: Props) => {
+const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
   return (
     <div className="py-3 px-4 flex flex-col h-full">
       <div className="flex justify-between items-center">
