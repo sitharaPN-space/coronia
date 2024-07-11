@@ -3,7 +3,7 @@ import Section from "../section-label/index";
 
 type Props = {};
 
-const BillingSettings = async (props: Props) => {
+const BillingSettings = async () => {
   const plan = await onGetSubscriptionPlan();
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
