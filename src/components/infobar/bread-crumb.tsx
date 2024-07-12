@@ -1,6 +1,6 @@
 "use client";
 import useSideBar from "@/context/use-sidebar";
-import { Loader } from "../loader/index";
+import { Loader } from "../loader";
 import { Switch } from "../ui/switch";
 type Props = {};
 
