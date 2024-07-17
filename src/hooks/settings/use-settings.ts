@@ -4,6 +4,7 @@ import {
   onCreateFilterQuestions,
   onCreateHelpDeskQuestion,
   onDeleteUserDomain,
+  onGetAllFilterQuestions,
   onGetAllHelpDeskQuestions,
   onUpdateDomain,
   onUpdatePassword,
@@ -232,4 +233,25 @@ export const useFilterQuestions = (id: string) => {
       setLoading(false);
     }
   });
+
+  const onGetQuestions = async () => {
+    setLoading(true);
+    const questions = await onGetAllFilterQuestions(id);
+    if (questions) {
+      setIsQuestions(questions.questions);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    onGetQuestions();
+  }, []);
+
+  return {
+    loading,
+    onAddFilterQuestions,
+    register,
+    errors,
+    isQuestions,
+  };
 };
