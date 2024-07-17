@@ -1,9 +1,11 @@
 "use client";
-
+import { Loader } from "@/components/loader";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useSettings } from "@/hooks/settings/use-settings";
 import PremiumBadge from "@/icons/premium-badge";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import CodeSnippet from "./code-snippet";
 import { DomainUpdate } from "./domain-update";
 import EditChatbotIcon from "./edit-chatbot-icon";
@@ -26,7 +28,7 @@ type Props = {
   } | null;
 };
 
-function SettingsForm({ id, name, chatBot, plan }: Props) {
+const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
   const {
     register,
     onUpdateSettings,
@@ -65,10 +67,32 @@ function SettingsForm({ id, name, chatBot, plan }: Props) {
               errors={errors}
             />
           </div>
+          <div className="col-span-1 relative ">
+            <Image
+              src="/images/bot-ui.png"
+              className="sticky top-0"
+              alt="bot-ui"
+              width={530}
+              height={769}
+            />
+          </div>
         </div>
+      </div>
+      <div className="flex gap-5 justify-end">
+        <Button
+          onClick={onDeleteDomain}
+          variant="destructive"
+          type="button"
+          className="px-10 h-[50px]"
+        >
+          <Loader loading={deleting}>Delete Domain</Loader>
+        </Button>
+        <Button type="submit" className="w-[100px] h-[50px]">
+          <Loader loading={loading}>Save</Loader>
+        </Button>
       </div>
     </form>
   );
-}
+};
 
 export default SettingsForm;
