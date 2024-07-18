@@ -7,4 +7,5 @@ How to change font in next js
 Toaster for errors 
 Dark mode of shadcn 
 dynamic imports of components
- 
+pusher notifications
+passing components through iframe in to another web page 
