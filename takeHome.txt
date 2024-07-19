@@ -8,4 +8,6 @@ Toaster for errors
 Dark mode of shadcn 
 dynamic imports of components
 pusher notifications
-passing components through iframe in to another web page 
+passing components through iframe in to another web page
+nodemailer emailing 
+open ai integration  

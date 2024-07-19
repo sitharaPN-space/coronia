@@ -11,6 +11,14 @@ export const extractUUIDFromString = (url: string) => {
   );
 };
 
+export const extractEmailsFromString = (text: string) => {
+  return text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
+};
+
+export const extractURLfromString = (url: string) => {
+  return url.match(/https?:\/\/[^\s"<>]+/);
+};
+
 export const pusherClient = {};
 // new PusherClient(
 //   process.env.NEXT_PUBLIC_PUSHER_APP_KEY as string,
@@ -27,6 +35,10 @@ export const pusherServer = {};
 //   cluster: process.env.NEXT_PUBLIC_PUSHER_APP_CLUSTOR as string,
 //   useTLS: true,
 // });
+
+export const postToParent = (message: string) => {
+  window.parent.postMessage(message, "*");
+};
 
 export const getMonthName = (month: number) => {
   return month == 1
